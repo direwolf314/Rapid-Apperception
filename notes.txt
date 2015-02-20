@@ -1,15 +1,6 @@
 =======
 Tagger
 =======
-
-For each file 
-    - check if it recognizes it as something we can parse (if the 
-    - retrieve dicitonary of {tag : [keywords]} for that type of file
-    - For each line in the file
-        - see if any of the keywords are in that line
-        - if so, create a db entry for this file/line/tag combination
-
-
 Later improvements:
     Context awareness 
         - if we see #include <sql.h> then we can assume that some string is a db op
