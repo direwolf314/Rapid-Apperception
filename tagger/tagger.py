@@ -31,6 +31,22 @@ class Tagger(object):
         client = pymongo.MongoClient(db_host, db_port)
         self._db = client[db_name]
 
+        self.supported_exts = self.get_supported_extensions()
+
+    def get_supported_extensions(self):
+        """Queries the database to fetch a list of extensions with existing keywords.
+
+        :returns: A set of strings representing supported file extensions.
+
+        """
+        exts = set()
+
+        curs = self._db.Keywords.find()
+        for rec in curs:
+            exts.add(rec['ext'])
+
+        return exts
+
     def parse(self, file_path):
         """Parses a single file and adds tags to the database.
 
@@ -42,10 +58,10 @@ class Tagger(object):
 
         _, ext = os.path.splitext(file_path)
 
-        if ext != '.c':
+        if ext not in self.supported_exts:
             return
 
-        self._log.debug('Found a C file: ' + file_path)
+        self._log.debug('Found a %s file: ' % ext + file_path)
 
         # Make sure records don't already exist
         ti_col = self._db.TaggingInfo
