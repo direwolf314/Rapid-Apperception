@@ -1,12 +1,14 @@
 =======
 Tagger
 =======
-Later improvements:
-    Context awareness 
-        - if we see #include <sql.h> then we can assume that some string is a db op
-
+TODO:
+Context awareness 
+    - if we see #include <sql.h> then we can assume that some string is a db op
 
 
 =====
 UI
 =====
+TODO:
+Connect with Database
+Implement searching
