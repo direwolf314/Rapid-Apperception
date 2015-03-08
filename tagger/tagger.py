@@ -83,7 +83,7 @@ class Tagger(object):
             for k in keywords:
                 position = line.find(k)
                 if position != -1:
-                    new_record = {'file_path': file_path,
+                    new_record = {'file_path': file_path.replace('\\','/'),
                                   'ext': ext,
                                   # Add 1 because most IDE's start at 1
                                   'line_num': line_num + 1,

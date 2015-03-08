@@ -22,6 +22,9 @@ def reset():
     db.drop_collection('TaggingInfo')
     print 'Dropped collection: TaggingInfo'
 
+    db.drop_collection('Keywords')
+    print 'Dropped collection: Keywords'
+
 
 if __name__ == '__main__':
     reset()

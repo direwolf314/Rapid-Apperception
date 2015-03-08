@@ -82,7 +82,7 @@
 		<script type="text/javascript">
 			
 			$(document).ready( function() {
-				$('#fileTreeDemo_1').fileTree({ root: 'code/', script: 'connectors/jqueryFileTree2.php' }, function(file) {
+				$('#fileTreeDemo_1').fileTree({ root: 'testing/', script: 'connectors/jqueryFileTree2.php' }, function(file) {
 					//alert(file);
                   $.post("jqueryFilePreview.php", {file: file}, function(data) {
                         $('#filePreview').html(data);

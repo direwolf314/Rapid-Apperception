@@ -1,4 +1,14 @@
 <?php
+$m = new MongoClient();
+$db = $m->RapidApperception;
+$col = $db->TaggingInfo;
+
+$query = array( 'file_path' => $_POST['file'] );
+$cursor = $col->find( $query );
+
+foreach ($cursor as $document) {
+    echo $document["key_match"] . "\n";
+}
 
 $_POST['file'] = urldecode($_POST['file']);
 

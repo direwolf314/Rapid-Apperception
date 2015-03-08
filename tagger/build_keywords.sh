@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# testing c (io)
+python add_keyword.py c getchar io
+python add_keyword.py c gets io
+python add_keyword.py c scanf io
+
 # input/output stuff
 python add_keyword.py java Java.io io
 python add_keyword.py java java.util.zip io
