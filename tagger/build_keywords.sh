@@ -121,7 +121,9 @@ python add_keyword.py java java.sql.Connection.prepareCall sql_and_db
 # ssl stuff
 python add_keyword.py java com.sun.net.ssl ssl
 python add_keyword.py java SSLContext ssl
+python add_keyword.py java SslContext ssl
 python add_keyword.py java SSLSocketFactory ssl
+python add_keyword.py java SslSocketFactory ssl
 python add_keyword.py java TrustManagerFactory ssl
 python add_keyword.py java HttpsURLConnection ssl
 python add_keyword.py java KeyManagerFactory ssl

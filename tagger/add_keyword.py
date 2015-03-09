@@ -5,6 +5,7 @@ import ConfigParser
 import pymongo
 import sys
 
+#TODO: add case sensitivity boolean to keyword
 
 def print_usage_and_die():
     print 'Usage: %s extention keyword tag_name' % sys.argv[0]

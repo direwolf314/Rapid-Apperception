@@ -15,6 +15,7 @@ Keywords -
     * ext         : string // A file extension
     * keyword     : string // The keyword text
     * tag_name    : string // The tag that the keyword belongs to
+    * // TODO: give ability to make case insensitive
     * // TODO: give the ability to sub-type tags - ex. each tag has a parent_tag
 
 TaggingInfo - 
