@@ -12,3 +12,4 @@ UI
 TODO:
 Connect with Database
 Implement searching
+Make number of tags appear next to files in browser

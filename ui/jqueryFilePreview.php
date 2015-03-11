@@ -1,18 +1,22 @@
 <?php
 $_POST['file'] = urldecode($_POST['file']);
 
+$base_dir = "/";
+//echo "File is: " . $_POST['file'];
+
 $m = new MongoClient();
 $db = $m->RapidApperception;
 $col = $db->TaggingInfo;
 
-$query = array( 'file_path' => $_POST['file'] );
+$query = array( 'file_path' => $base_dir . $_POST['file'] );
 $cursor = $col->find( $query );
 $line_nums = "";
 foreach ( $cursor as $document ){
   $line_nums = $line_nums . $document["line_num"] . ",";
 }
+//echo "Line_nums:" . $line_nums;
 
-$file = fopen("/" . $_POST['file'], "r") or die("Unable to open file!");
+$file = fopen($base_dir . $_POST['file'], "r") or die("Unable to open file!");
 
 //WARN
 //right now, language name for prism attribute is completely based on extension

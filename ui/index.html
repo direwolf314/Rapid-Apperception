@@ -7,27 +7,27 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		
 		<style type="text/css">
-			BODY,
-            P,
-			HTML {
+			body,
+            p,
+			html {
 				padding: 0px;
 				margin: 0px;
 			}
-			BODY {
-				font-family: Verdana, Arial, Helvetica, sans-serif;
+			body {
+				font-family: verdana, arial, helvetica, sans-serif;
 				font-size: 11px;
-				background: #EEE;
+				background: #eee;
 				padding: 15px;
 			}
 			
-			H1 {
-				font-family: Georgia, serif;
+			h1 {
+				font-family: georgia, serif;
 				font-size: 20px;
 				font-weight: normal;
 			}
 			
-			H2 {
-				font-family: Georgia, serif;
+			h2 {
+				font-family: georgia, serif;
 				font-size: 16px;
 				font-weight: normal;
 				margin: 0px 0px 10px 0px;
@@ -50,11 +50,11 @@
 				//height: 400px;
 				width: 15vw;
 				height: 60vh;
-				border-top: solid 1px #BBB;
-				border-left: solid 1px #BBB;
-				border-bottom: solid 1px #FFF;
-				border-right: solid 1px #FFF;
-				background: #FFF;
+				border-top: solid 1px #bbb;
+				border-left: solid 1px #bbb;
+				border-bottom: solid 1px #fff;
+				border-right: solid 1px #fff;
+				background: #fff;
 				overflow: scroll;
 				//padding: 5px;
 			}
@@ -62,11 +62,11 @@
 			.text {
 				width:70vw;
 				height: 60vh;
-				border-top: solid 1px #BBB;
-				border-left: solid 1px #BBB;
-				border-bottom: solid 1px #FFF;
-				border-right: solid 1px #FFF;
-				background: #FFF;
+				border-top: solid 1px #bbb;
+				border-left: solid 1px #bbb;
+				border-bottom: solid 1px #fff;
+				border-right: solid 1px #fff;
+				background: #fff;
 				overflow: scroll;
                 background: #f5f2f0;
 				//padding: 5px;
@@ -75,7 +75,7 @@
 		</style>
 
         <!-- sytax highlighting -->
-        <link rel="stylesheet" type="text/css" href="prism.css">
+        <link rel="stylesheet" type="text/css" href="prism.css"></link>
         <script src="prism.js" type="text/javascript"></script>
 		
 		<script src="jquery.js" type="text/javascript"></script>
@@ -88,15 +88,16 @@
 		<script type="text/javascript">
 			
 			$(document).ready( function() {
-				$('#fileTreeDemo_1').fileTree({ root: 'testing/', script: 'connectors/jqueryFileTree2.php' }, function(file) {
-                  $.post("jqueryFilePreview.php", {file: file}, function(data) {
-                        $('#filePreview').html(data);
-                        Prism.highlightAll();
-                    });
-
-				});
-				
-			});
+                $('#fileTreeDemo_1').fileTree( 
+                        {root: 'testing/', script: 'connectors/jqueryFileTree2.php' }, 
+                        function(file) {
+                            $.post("jqueryFilePreview.php", {file: file}, 
+                            function(data) {
+                                $('#filePreview').html(data);
+                                Prism.highlightAll();
+                            });
+                        });
+            });
 		</script>
 
 		<!-- Script for clearing search bar when clicked -->
@@ -109,14 +110,13 @@
 				});
 			});
 		</script>
-
 	</head>
 	
 	<body>
 		
 		<div class="search">
 			<form id="tagsearch" method="get" action="http://www.google.com">
-		        	<input type="text" id="tfq2b" class="tftextinput2" name="q" size="42" maxlength="120" value="Search tags"><input type="submit" value=">" class="tfbutton2">
+		        	<input type="text" id="tfq2b" class="tftextinput2" name="q" size="42" maxlength="120" value="Search tags"/><input type="submit" value=">" class="tfbutton2"/>
 			</form>
 			<div class="tfclear"></div>
 		</div>
