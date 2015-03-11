@@ -1,0 +1,64 @@
+body,
+p,
+html {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 11px;
+    background: #eee;
+    padding: 15px;
+}
+
+h1 {
+    font-family: georgia, serif;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+h2 {
+    font-family: georgia, serif;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px 0px 10px 0px;
+}
+
+.example {
+    width: 100vw;
+    height: 95vh;
+    float: left;
+    //margin: 15px;
+}
+
+.search {
+    width: 100vw;
+    height: 5vh;
+}
+
+.browser {
+    //width: 200px;
+    //height: 400px;
+    width: 15vw;
+    height: 60vh;
+    border-top: solid 1px #bbb;
+    border-left: solid 1px #bbb;
+    border-bottom: solid 1px #fff;
+    border-right: solid 1px #fff;
+    background: #fff;
+    overflow: scroll;
+    //padding: 5px;
+}
+
+.text {
+    width:70vw;
+    height: 60vh;
+    border-top: solid 1px #bbb;
+    border-left: solid 1px #bbb;
+    border-bottom: solid 1px #fff;
+    border-right: solid 1px #fff;
+    background: #fff;
+    overflow: scroll;
+    background: #f5f2f0;
+    //padding: 5px;
+}

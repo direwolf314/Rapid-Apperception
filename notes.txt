@@ -12,4 +12,7 @@ UI
 TODO:
 Connect with Database
 Implement searching
-Make number of tags appear next to files in browser
+    X Restrict highlighting to appropriate lines of matching tag
+        - figure out why font size changes search vs. no search
+    - Only show files and folders that contain the tag
+    - Make number of tags present in the file appear next to files in the browser
