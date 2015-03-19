@@ -20,9 +20,9 @@ $col = $db->TaggingInfo;
 
 $query = array();
 if( !isset($_POST['tag_name']) ) {
-    $query = array( 'file_path' => $base_dir . $_POST['file'] );
+    $query = array( 'file_path' => $_POST['file'] );
 } else {
-    $query = array( 'file_path' => $base_dir . $_POST['file'] ,
+    $query = array( 'file_path' => $_POST['file'] ,
                     'tag_name' => $_POST['tag_name']);
 }
 
