@@ -8,6 +8,46 @@ function! ack#Ack(cmd, args)
   else
     let l:grepargs = a:args . join(a:000, ' ')
   end
+
+" <HACK> Hacking in python things here
+  
+python << endpython
+
+import vim
+import pymongo
+
+# Set up the database connection     
+db_name = 'RapidApperception'
+db_host = 'localhost'
+db_port = 27017
+
+client = pymongo.MongoClient(db_host, db_port)    
+db = client[db_name]    
+
+tag = vim.eval('a:args')
+
+# TODO: expand this to check for     
+rec = {'tag_name' : tag}    
+
+curs = db.Keywords.find(rec)    
+
+reg = '|'.join(rec['keyword'] for rec in curs)    
+
+#print '%s' % reg
+vim.command('let l:grepargs=%s' % '"\\"' + reg + '\\""')
+
+#a = vim.eval("a:args")
+#vim.command("let l:testic= '%s'" % a)
+#vim.command("echom testic is l:testic")
+#print anArg
+#vim.command("let l:grepargs=1")
+
+endpython
+
+" </HACK> 
+
+
+
   echom l:grepargs
   let l:ackprg_run = g:ackprg
 
