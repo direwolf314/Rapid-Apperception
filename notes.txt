@@ -10,9 +10,14 @@ Context awareness
 UI
 =====
 TODO:
-Connect with Database
 Implement searching
+    - resizable windows
+    - Manual tagging from highlighted text
+    - line # on every line - only highlight matching lines
     X Restrict highlighting to appropriate lines of matching tag
         - figure out why font size changes search vs. no search
     - Only show files and folders that contain the tag
-    - Make number of tags present in the file appear next to files in the browser
+    - Make number tags present in the file/folder appear next to it in browser
+    - 'Open project' button
+        - Have a list of projects (root folders) in database
+        - If selected folder (project doesn't exist) then trigger tagger

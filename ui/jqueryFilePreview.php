@@ -1,6 +1,8 @@
 <?php
 //echo "File is: " . $_POST['file'];
-//echo "tag_name is: " . $_POST['tag_name'];
+//if( isset($_POST['tag_name']) ) {
+    //echo "tag_name is: " . $_POST['tag_name'];
+//}
 
 $_POST['file'] = urldecode($_POST['file']);
 if( isset($_POST['tag_name']) ) {
@@ -9,7 +11,6 @@ if( isset($_POST['tag_name']) ) {
 } else {
     echo "Listing matches for all tags.";
 }
-
 
 $base_dir = "/";
 
