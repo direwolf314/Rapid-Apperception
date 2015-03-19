@@ -28,7 +28,6 @@ h2 {
     width: 100vw;
     height: 95vh;
     float: left;
-    //margin: 15px;
 }
 
 .search {
@@ -37,8 +36,6 @@ h2 {
 }
 
 .browser {
-    //width: 200px;
-    //height: 400px;
     width: 15vw;
     height: 60vh;
     border-top: solid 1px #bbb;
@@ -48,6 +45,7 @@ h2 {
     background: #fff;
     overflow: scroll;
     //padding: 5px;
+    resize: both;
 }
 
 .text {
@@ -60,5 +58,13 @@ h2 {
     background: #fff;
     overflow: scroll;
     background: #f5f2f0;
-    //padding: 5px;
+    resize: both;
 }
+
+/*.text {*/
+    /*border: 2px solid;*/
+    /*padding: 20px; */
+    /*width: 300px;*/
+    /*resize: both;*/
+    /*overflow: auto;*/
+/*}*/

@@ -12,6 +12,9 @@
 //
 // Options:  root           - root folder to display; default = /
 //           script         - location of the serverside AJAX file to use; default = jqueryFileTree.php
+//           // <OUR CODE INSERTED HERE>
+//           tag            - the tag we want to pass to the script
+//           // </OUR CODE INSERTED HERE>
 //           folderEvent    - event to trigger expand/collapse; default = click
 //           expandSpeed    - default = 500 (ms); use -1 for no animation
 //           collapseSpeed  - default = 500 (ms); use -1 for no animation
@@ -38,6 +41,7 @@ if(jQuery) (function($){
 			if( !o ) var o = {};
 			if( o.root == undefined ) o.root = '/';
 			if( o.script == undefined ) o.script = 'jqueryFileTree.php';
+			if( o.tag == undefined ) o.tag = '';
 			if( o.folderEvent == undefined ) o.folderEvent = 'click';
 			if( o.expandSpeed == undefined ) o.expandSpeed= 500;
 			if( o.collapseSpeed == undefined ) o.collapseSpeed= 500;
@@ -51,7 +55,7 @@ if(jQuery) (function($){
 				function showTree(c, t) {
 					$(c).addClass('wait');
 					$(".jqueryFileTree.start").remove();
-					$.post(o.script, { dir: t }, function(data) {
+					$.post(o.script, { dir: t, tag_name: o.tag}, function(data) {
 						$(c).find('.start').html('');
 						$(c).removeClass('wait').append(data);
 						if( o.root == t ) $(c).find('UL:hidden').show(); else $(c).find('UL:hidden').slideDown({ duration: o.expandSpeed, easing: o.expandEasing });
