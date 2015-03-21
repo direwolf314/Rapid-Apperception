@@ -59,6 +59,14 @@
                 }
                 return text;
             }
+
+            // Retrieve the extension of the current file
+            function getExtension() {
+                if (typeof current_file == 'undefined') {
+                    return '';
+                }
+                return current_file.split('.').pop();
+            }
            
             // Print the contents of the file tree
             function renderFileTree() {
@@ -110,12 +118,35 @@
                 $.contextMenu({
                     selector: '.context-menu-one', 
                     callback: function(key, options) {
-                        var m = "clicked: " + key;
-                        window.console && console.log(m) || alert(m); 
+                        <!--var m = "clicked: " + key;-->
+                        <!--window.console && console.log(m) || alert(m); -->
                         alert('highlighted:' + getSelectionText());
                     },
                     items: {
-                        "Add-Tag": {name: "Add Tag"},
+                        "Add-Tag": {
+                            "name": "Add Tag", 
+                            "items": {
+                                keyword_box: {
+                                    name: "Keyword", 
+                                    type: 'text', 
+                                    value: getSelectionText()
+                                },
+                                tag_box: {
+                                    name: "Tag", 
+                                    type: 'text', 
+                                    value: "io"
+                                },
+                                extension_box: {
+                                    name: "Extension", 
+                                    type: 'text', 
+                                    value: getExtension()
+                                },
+                                submit_button: {
+                                    name: "Something Clickable", 
+                                    callback: $.noop
+                                }
+                            }
+                        }
                     }
                 });
                 
