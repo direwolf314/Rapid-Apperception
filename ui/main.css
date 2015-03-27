@@ -61,24 +61,15 @@ h2 {
     resize: both;
 }
 
-.custom-menu {
-    z-index: 1000;
-    position: absolute;
-    border: 1px solid #CCC;
-    font-family: sans-serif;
-    background: #FFF;
-    color: #333;
-    border-radius: 5px;
-    padding: 0;
-}
+/*body { font-size: 62.5%; }*/
 
-/* Each of the items in the list */
-.custom-menu li {
-    padding: 8px 12px;
-    cursor: pointer;
-    list-style-type: none;
-}
+/*label, input { display:block; }*/
 
-.custom-menu li:hover {
-    background-color: #DEF;
-}
+input.formtext{ margin-bottom:12px; width:95%; padding: .4em; }
+
+fieldset { padding:0; border:0; margin-top:25px; }
+
+.ui-dialog .ui-state-error { padding: .3em; }
+
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
+
