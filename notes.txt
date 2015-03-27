@@ -10,8 +10,8 @@ Context awareness
 UI
 =====
 TODO:
+Manual tagging from highlighted text
 Implement searching
-    - Manual tagging from highlighted text
     - Only show files and folders that contain the tag?
     - 'Open project' button
         - Have a list of projects (root folders) in database

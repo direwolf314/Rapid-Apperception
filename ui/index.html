@@ -115,13 +115,8 @@
 			});
 
             $(function(){
-                $.contextMenu({
-                    selector: '.context-menu-one', 
-                    callback: function(key, options) {
-                        <!--var m = "clicked: " + key;-->
-                        <!--window.console && console.log(m) || alert(m); -->
-                        alert('highlighted:' + getSelectionText());
-                    },
+                var submitted = false;
+                $.contextMenu({selector: '.context-menu-one'},
                     items: {
                         "Add-Tag": {
                             "name": "Add Tag", 
@@ -142,17 +137,40 @@
                                     value: getExtension()
                                 },
                                 submit_button: {
-                                    name: "Something Clickable", 
-                                    callback: $.noop
+                                    name: "Submit", 
+                                    callback: function() {
+                                        submitted = true;
+                                        return true;
+                                    }
                                 }
                             }
                         }
+                    },
+                    events: {
+                        hide: function(opt) {
+                            if (!submitted) {
+                                return;
+                            }
+
+                            var $this = this;
+                            $.contextMenu.getInputValues(opt, $this.data());
+                            k = opt.inputs.keyword_box.value;
+                            t = opt.inputs.tag_box.value;
+                            e = opt.inputs.extension_box.value;
+
+                            <!--if (k == "" || t == "" || e == "") {-->
+                                <!--submitted = false;-->
+                                <!--return;-->
+                            <!--}-->
+
+                            console.log('contents:', opt.inputs);
+                            console.log('keyword:', k);
+                            console.log('tag:', t);
+                            console.log('extension:', e);
+                            submitted = false;
+                        }
                     }
                 });
-                
-                $('.context-menu-one').on('click', function(e){
-                    console.log('clicked', this);
-                })
             });
 
 
