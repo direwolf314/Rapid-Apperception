@@ -1,0 +1,195 @@
+# testing c (io)
+c getchar io
+c gets io
+c scanf io
+
+# input/output stuff
+java Java.io io
+java java.util.zip io
+java java.util.jar io
+java FileInputStream io
+java ObjectInputStream io
+java FilterInputStream io
+java PipedInputStream io
+java SequenceInputStream io
+java StringBufferInputStream io
+java BufferedReader io
+java ByteArrayInputStream io
+java CharArrayReader io
+java File io
+java ObjectInputStream io
+java PipedInputStream io
+java StreamTokenizer io
+java getResourceAsStream io
+java java.io.FileReader io
+java java.io.FileWriter io
+java java.io.RandomAccessFile io
+java java.io.File io
+java java.io.FileOutputStream io
+java mkdir io
+java renameTo io
+
+# servlet stuff
+java javax.servlet. servlet
+java getParameterNames servlet
+java getParameterValues servlet
+java getParameter servlet
+java getParameterMap servlet
+java getScheme servlet
+java getProtocol servlet
+java getContentType servlet
+java getServerName servlet
+java getRemoteAddr servlet
+java getRemoteHost servlet
+java getRealPath servlet
+java getLocalName servlet
+java getAttribute servlet
+java getAttributeNames servlet
+java getLocalAddr servlet
+java getAuthType servlet
+java getRemoteUser servlet
+java getCookies servlet
+java isSecure servlet
+java HttpServletRequest servlet
+java getQueryString servlet
+java getHeaderNames servlet
+java getHeaders servlet
+java getPrincipal servlet
+java getUserPrincipal servlet
+java isUserInRole servlet
+java getInputStream servlet
+java getOutputStream servlet
+java getWriter servlet
+java addCookie servlet
+java addHeader servlet
+java setHeader servlet
+java setAttribute servlet
+java putValue servlet
+java javax.servlet.http.Cookie servlet
+java getName servlet
+java getPath servlet
+java getDomain servlet
+java getComment servlet
+java getMethod servlet
+java getPath servlet
+java getReader servlet
+java getRealPath servlet
+java getRequestURI servlet
+java getRequestURL servlet
+java getServerName servlet
+java getValue servlet
+java getValueNames servlet
+java getRequestedSessionId servlet
+
+# xss stuff
+java javax.servlet.ServletOutputStream.print xss
+java javax.servlet.jsp.JspWriter.print xss
+java java.io.PrintWriter.print xss
+
+# response splitting stuff
+java javax.servlet.http.HttpServletResponse.sendRedirect response_splitting
+java addHeader response_splitting
+java setHeader response_splitting
+
+# redirection stuff
+java sendRedirect redirection
+java setStatus redirection
+java addHeader redirection
+java setHeader redirection
+
+# sql and database stuff
+java jdbc sql_and_db
+java executeQuery sql_and_db
+java select sql_and_db
+java insert sql_and_db
+java update sql_and_db
+java delete sql_and_db
+java execute sql_and_db
+java executestatement sql_and_db
+java createStatement sql_and_db
+java java.sql.ResultSet.getString sql_and_db
+java java.sql.ResultSet.getObject sql_and_db
+java java.sql.Statement.executeUpdate sql_and_db
+java java.sql.Statement.executeQuery sql_and_db
+java java.sql.Statement.execute sql_and_db
+java java.sql.Statement.addBatch sql_and_db
+java java.sql.Connection.prepareStatement sql_and_db
+java java.sql.Connection.prepareCall sql_and_db
+
+# ssl stuff
+java com.sun.net.ssl ssl
+java SSLContext ssl
+java SslContext ssl
+java SSLSocketFactory ssl
+java SslSocketFactory ssl
+java TrustManagerFactory ssl
+java HttpsURLConnection ssl
+java KeyManagerFactory ssl
+
+# session mgt stuff
+java getSession session_mgt
+java invalidate session_mgt
+java getId session_mgt
+
+# legacy_interaction
+java java.lang.Runtime.exec legacy_interaction
+java java.lang.Runtime.getRuntime legacy_interaction
+
+# logging
+java java.io.PrintStream.write logging
+java log4j logging
+java jLo logging
+java Lumberjack logging
+java MonoLog logging
+java qflog logging
+java just4log logging
+java log4Ant logging
+java JDLabAgent logging
+
+# architectural_analysis
+java XMLHTTP architectural_analysis
+java org.hibernate architectural_analysis
+java org.apache.struts architectural_analysis
+java org.exolab.castor architectural_analysis
+java org.springframework architectural_analysis
+java javax.xml architectural_analysis
+java javax.faces architectural_analysis
+java JMS architectural_analysis
+
+# generic
+java Hack generic
+java hack generic
+java Kludge generic
+java kludge generic
+java Bypass generic
+java bypass generic
+java Steal generic
+java steal generic
+java Stolen generic
+java stolen generic
+java Divert generic
+java divert generic
+java Broke generic
+java broke generic
+java Trick generic
+java trick generic
+java FIXME generic
+java fixme generic
+java Fixme generic
+java ToDo generic
+java todo generic
+java TODO generic
+java Password generic
+java password generic
+java Backdoor generic
+java backdoor generic
+
+# web2.0
+java document.write web2.0
+java eval web2.0
+java document.cookie web2.0
+java window.location web2.0
+java document.URL web2.0
+
+# xmlhttp
+java window.createRequest xmlhttp
