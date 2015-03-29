@@ -11,7 +11,7 @@
 // Usage: $('.fileTreeDemo').fileTree( options, callback )
 //
 // Options:  root           - root folder to display; default = /
-//           script         - location of the serverside AJAX file to use; default = jqueryFileTree.php
+//           script         - location of the serverside AJAX file to use; default = jqueryFileTree2.php
 //           // <OUR CODE INSERTED HERE>
 //           tag            - the tag we want to pass to the script
 //           // </OUR CODE INSERTED HERE>
@@ -40,7 +40,7 @@ if(jQuery) (function($){
 			// Defaults
 			if( !o ) var o = {};
 			if( o.root == undefined ) o.root = '/';
-			if( o.script == undefined ) o.script = 'jqueryFileTree.php';
+			if( o.script == undefined ) o.script = 'jqueryFileTree2.php';
 			if( o.tag == undefined ) o.tag = '';
 			if( o.folderEvent == undefined ) o.folderEvent = 'click';
 			if( o.expandSpeed == undefined ) o.expandSpeed= 500;

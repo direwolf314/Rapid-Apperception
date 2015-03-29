@@ -73,7 +73,7 @@
             // Print the contents of the file tree
             function renderFileTree() {
                 $('#fileTreeDemo_1').fileTree( 
-                    {root: 'testing/', script: 'connectors/jqueryFileTree2.php',
+                    {root: 'testing/', script: 'jqueryFileTree2.php',
                     tag: stored_tag_name}, 
                     function(file) {
                         current_file = file;
@@ -126,7 +126,29 @@
                 //var tips = $( ".validateTips" );
          
                 function addTag() {
-                  alert('here');
+                    dialog.dialog("close");
+                    console.log('made it this far');
+                    k = $('#keyword').val();
+                    t =  $('#tag').val();
+                    e = $('#extension').val();
+                    console.log(k);
+                    console.log(t);
+                    console.log(e);
+                    if (k.length == 0 || t.length == 0 || e.length == 0) {
+                        return;
+                    }
+                    $.post("addTag.php", 
+                        {keyword: k,
+                         tag: t,
+                         extension: e,
+                         project: '/testing'
+                        },
+                        function(data) {
+                            console.log(data);
+                            renderFileTree();
+                            renderPreview(current_file);
+                        }
+                    );
                 }
              
                 dialog = $( "#dialog-form" ).dialog({
@@ -187,7 +209,7 @@
             </tr></table>
 		</div>
 
-        <div id="dialog-form" title="Create new user">
+        <div id="dialog-form" title="Add New Tag">
           <p class="validateTips">All form fields are required.</p>
             <fieldset>
               <label>Keyword</label>

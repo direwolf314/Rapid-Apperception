@@ -15,24 +15,31 @@ def print_usage_and_die():
     sys.exit(1)
 
 def initialize_log(config):
+    return None
     log_name = config.get('General', 'log_name')
+    print "got log name"
     logging.basicConfig(level=logging.DEBUG,
                         format=('%(asctime)s - %(name)s - '
                                 '%(levelname)s - %(message)s'),
                         filename=log_name,
                         filemode='w')
+    print "finished"
 
 
 def run(target_path):
+    print "Running run.py"
     config_name = 'tagger.conf'
 
     config = ConfigParser.SafeConfigParser()
     config.read(config_name)
     initialize_log(config)
+    print "initted log"
 
     log = logging.getLogger(__name__)
-    log.debug('Log initialized!')
+    #log.debug('Log initialized!')
+    print 'Log initialized to None for now'
 
+    print "tagger"
     t = Tagger(target_path, config, log)
     t.run()
 

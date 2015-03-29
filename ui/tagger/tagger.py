@@ -54,27 +54,29 @@ class Tagger(object):
         :returns: None
 
         """
-        self._log.debug('Parsing: %s' % file_path)
+        print 'Parsing: %s' % file_path
+        #self._log.debug('Parsing: %s' % file_path)
 
         _, ext = os.path.splitext(file_path)
 
         if ext not in self.supported_exts:
             return
 
-        self._log.debug('Found a %s file: ' % ext + file_path)
+        #self._log.debug('Found a %s file: ' % ext + file_path)
 
-        # Make sure records don't already exist
         ti_col = self._db.TaggingInfo
-        if ti_col.find_one({'file_path': file_path}) is not None:
-            self._log.debug('DB records for this file already exist')
-            return
+        # Make sure records don't already exist
+        #if ti_col.find_one({'file_path': file_path}) is not None:
+            #self._log.debug('DB records for this file already exist')
+            #return
 
         # Get tags that apply to this extension
         keywords = {}
         for rec in self._db.Keywords.find({'ext': ext}):
             keywords[rec['keyword']] = rec['tag_name']
 
-        self._log.debug('Keywords are: %s', str(keywords))
+        #self._log.debug('Keywords are: %s', str(keywords))
+        print 'Keywords are: %s', str(keywords)
 
         # Look through the file
         content_lines = open(file_path, 'r').readlines()
@@ -90,8 +92,9 @@ class Tagger(object):
                                   'line_offset': position + 1,
                                   'key_match': k,
                                   'tag_name': keywords[k]}
-                    ti_col.insert(new_record)
-                    self._log.debug('Found match! Added: %s' % new_record)
+                    ti_col.update(new_record, new_record, upsert=True);
+                    print 'Found match! Added: %s' % new_record
+                    #self._log.debug('Found match! Added: %s' % new_record)
 
     def dir_parse(self, dir_path):
         """Walks a directory and parses every file it contains.
@@ -100,9 +103,11 @@ class Tagger(object):
         :returns: None
 
         """
-        self._log.debug('Recursively parsing: %s' % dir_path)
+        #self._log.debug('Recursively parsing: %s' % dir_path)
+        print 'Recursively parsing: %s' % dir_path
         for dirpath, dirnames, filenames in os.walk(dir_path):
-            self._log.debug('Walking dir: %s' % dirpath)
+            print 'Walking dir: %s' % dirpath
+            #self._log.debug('Walking dir: %s' % dirpath)
 
             for f in filenames:
                 self.parse(os.path.join(dirpath, f))
@@ -113,10 +118,12 @@ class Tagger(object):
         :returns: None
 
         """
+        print 'Running...'
         if os.path.isdir(self._target_path):
             self.dir_parse(self._target_path)
         elif os.path.isfile(self._target_path):
             self.parse(self._target_path)
         else:
-            self._log.error('Target was neither file nor directory! Exiting.')
+            #self._log.error('Target was neither file nor directory! Exiting.')
+            print 'Target was neither file nor directory! Exiting.'
             sys.exit(1)
