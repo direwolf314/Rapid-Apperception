@@ -28,6 +28,7 @@
 		<script type="text/javascript">
             var stored_tag_name;
             var current_file;
+            var stored_tree_state;
 
             function renderPreview(file){
                 if (typeof current_file == 'undefined') {
@@ -69,12 +70,58 @@
                 }
                 return current_file.split('.').pop();
             }
+
+            // Return the open/closed status of each dir in the file tree
+            function saveTreeState() {
+                results = [];
+                $('.jqueryFileTree li').each( function(index) {
+                    console.log(index + ': ' + $(this).attr('class'));
+                    result = 0;
+                    if ($(this).attr('class') === 'directory expanded') {
+                        result = 1;
+                    }
+                    results[index] = result;
+                });
+                stored_tree_state = results;
+                //console.log('State is:' + stored_tree_state);
+            }
+
+            // Callback to fetch the saved tree state
+            function getStoredTreeState() {
+                return stored_tree_state;
+
+            }
+
+            // Restore the open/closed status of each dir in the file tree
+            function restoreTreeState(state) {
+                console.log('In restoreTreeState');
+                if (state.length < 1) {
+                    console.log('Restore state list was empty');
+                    return;
+                }
+
+                $('.jqueryFileTree li').each( function(index) {
+                    console.log('restoring ' + index + ': ' + $(this).attr('class') + ' -- to ' + state[index]);
+                    if (state[index] == 1) {
+                        $(this)[0].click(); // this isn't working...
+                        
+                        console.log('clicked');
+                    }
+                });
+            }
            
             // Print the contents of the file tree
             function renderFileTree() {
+                // Save the current state of the file tree (clicked, unclicked)
+                saveTreeState();
+
+                // Display the file tree
                 $('#fileTreeDemo_1').fileTree( 
-                    {root: '/testing/', script: 'jqueryFileTree2.php',
-                    tag: stored_tag_name}, 
+                    {root: '/testing/', 
+                     script: 'jqueryFileTree2.php',
+                     tag: stored_tag_name,
+                     restoreCallback: restoreTreeState,
+                     restoreStateCallback: getStoredTreeState}, 
                     function(file) {
                         current_file = file;
                         renderPreview(file);
@@ -119,10 +166,6 @@
             $(function() {
     
                 var dialog, form;
-                var name = $( "#name" );
-                var email = $( "#email" );
-                var password = $( "#password" );
-                var allFields = $( [] ).add( name ).add( email ).add( password );
                 //var tips = $( ".validateTips" );
          
                 function addTag() {
@@ -166,7 +209,6 @@
                         if (form.length > 0) {
                             form[ 0 ].reset();
                         }
-                        allFields.removeClass( "ui-state-error" );
                       }
                 });
              

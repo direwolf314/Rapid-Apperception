@@ -10,9 +10,9 @@ Context awareness
 UI
 =====
 TODO:
-Manual tagging from highlighted text
-Implement searching
-    - Only show files and folders that contain the tag?
-    - 'Open project' button
-        - Have a list of projects (root folders) in database
-        - If selected folder (project doesn't exist) then trigger tagger
+Restore the state of the file tree whenever it refreshes
+'Open project' button
+    - Have a list of projects (root folders) in database
+    - If selected folder (project doesn't exist) then trigger tagger
+'n/N' key bindings to go jump forward/back in matches
+'enter' key binding on add_tag

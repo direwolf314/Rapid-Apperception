@@ -12,9 +12,9 @@
 //
 // Options:  root           - root folder to display; default = /
 //           script         - location of the serverside AJAX file to use; default = jqueryFileTree2.php
-//           // <OUR CODE INSERTED HERE>
+//           // Frank was here
 //           tag            - the tag we want to pass to the script
-//           // </OUR CODE INSERTED HERE>
+//           // </Frank was here>
 //           folderEvent    - event to trigger expand/collapse; default = click
 //           expandSpeed    - default = 500 (ms); use -1 for no animation
 //           collapseSpeed  - default = 500 (ms); use -1 for no animation
@@ -41,6 +41,7 @@ if(jQuery) (function($){
 			if( !o ) var o = {};
 			if( o.root == undefined ) o.root = '/';
 			if( o.script == undefined ) o.script = 'jqueryFileTree2.php';
+            // Frank was here
 			if( o.tag == undefined ) o.tag = '';
 			if( o.folderEvent == undefined ) o.folderEvent = 'click';
 			if( o.expandSpeed == undefined ) o.expandSpeed= 500;
@@ -49,17 +50,29 @@ if(jQuery) (function($){
 			if( o.collapseEasing == undefined ) o.collapseEasing = null;
 			if( o.multiFolder == undefined ) o.multiFolder = true;
 			if( o.loadMessage == undefined ) o.loadMessage = 'Loading...';
+            // Frank was here
+            if( o.restoreCallback == undefined ) o.restoreCallback = null;
+            if( o.restoreStateCallback == undefined ) o.restoreState = null; 
 			
 			$(this).each( function() {
 				
-				function showTree(c, t) {
+				function showTree(c, t, should_callback) {
 					$(c).addClass('wait');
 					$(".jqueryFileTree.start").remove();
+                    // Frank was here
 					$.post(o.script, { dir: t, tag_name: o.tag}, function(data) {
 						$(c).find('.start').html('');
 						$(c).removeClass('wait').append(data);
 						if( o.root == t ) $(c).find('UL:hidden').show(); else $(c).find('UL:hidden').slideDown({ duration: o.expandSpeed, easing: o.expandEasing });
 						bindTree(c);
+                        console.log('binding finished');
+
+                        // Frank was here
+                        if (should_callback) {
+                            state = o.restoreStateCallback();
+                            console.log('Stored state was: ' + state);
+                            o.restoreCallback(state);
+                        }
 					});
 				}
 				
@@ -91,7 +104,9 @@ if(jQuery) (function($){
 				// Loading message
 				$(this).html('<ul class="jqueryFileTree start"><li class="wait">' + o.loadMessage + '<li></ul>');
 				// Get the initial file list
-				showTree( $(this), escape(o.root) );
+				//showTree( $(this), escape(o.root) );
+                // Frank was here
+				showTree( $(this), escape(o.root), true);
 			});
 		}
 	});
