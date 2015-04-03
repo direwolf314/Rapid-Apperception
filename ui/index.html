@@ -103,8 +103,7 @@
                 $('.jqueryFileTree li').each( function(index) {
                     console.log('restoring ' + index + ': ' + $(this).attr('class') + ' -- to ' + state[index]);
                     if (state[index] == 1) {
-                        $(this)[0].click(); // this isn't working...
-                        
+                        $(this).children()[0].click(); // this isn't working...
                         console.log('clicked');
                     }
                 });

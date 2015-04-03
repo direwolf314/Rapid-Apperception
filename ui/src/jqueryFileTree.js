@@ -70,14 +70,15 @@ if(jQuery) (function($){
                         // Frank was here
                         if (should_callback) {
                             state = o.restoreStateCallback();
-                            console.log('Stored state was: ' + state);
                             o.restoreCallback(state);
                         }
 					});
 				}
 				
 				function bindTree(t) {
-					$(t).find('LI A').bind(o.folderEvent, function() {
+                    //$(document).on(o.folderEvent, '.jqueryFileTree LI A', function() { 
+					$(t).find('LI A').on(o.folderEvent, function() {
+                        $(this).uniqueId();
 						if( $(this).parent().hasClass('directory') ) {
 							if( $(this).parent().hasClass('collapsed') ) {
 								// Expand
@@ -99,7 +100,9 @@ if(jQuery) (function($){
 						return false;
 					});
 					// Prevent A from triggering the # on non-click events
-					if( o.folderEvent.toLowerCase != 'click' ) $(t).find('LI A').bind('click', function() { return false; });
+					if( o.folderEvent.toLowerCase != 'click' ) 
+                        //$(document).on('click', '.jqueryFileTree LI A', function() {return false;});
+                        $(t).find('LI A').on('click', function() { return false; });
 				}
 				// Loading message
 				$(this).html('<ul class="jqueryFileTree start"><li class="wait">' + o.loadMessage + '<li></ul>');
