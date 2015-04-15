@@ -53,11 +53,13 @@ if( file_exists($base_dir . $_POST['dir']) ) {
                                         'tag_name' => $_POST['tag_name']);
                     }                   
                     $count = $col->count($query);
+                    $folderText = $name;
                     $name = $name . '  - ' . $count . ' matches';
 
                     echo "<li class=\"directory collapsed\">
                           <a href=\"#\" rel=\"" . $path .
-                          "/\">" . $name . "</a></li>";
+                          "/\" onmouseover=\"setGlobalTopLevel('" .
+                          $folderText . "')\">" . $name . "</a></li>";
 
                 } else {
                     // All files

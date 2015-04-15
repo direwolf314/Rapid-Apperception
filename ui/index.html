@@ -26,9 +26,14 @@
 
 		<!-- Script for file browser-->
 		<script type="text/javascript">
+            var global_top_level = "";
             var stored_tag_name;
             var current_file;
             var stored_tree_state;
+
+            function setGlobalTopLevel(folderName){
+                global_top_level = folderName;
+            }
 
             function renderPreview(file){
                 if (typeof current_file == 'undefined') {
@@ -232,6 +237,27 @@
                         "addtag": {name: "Add Tag"}
                     }
                 });
+
+                $.contextMenu({
+                    selector: '.context-menu-two',
+                    callback: function(key, options) {
+                        if (key == 'runtagger') {
+                            var project = "/testing/" + global_top_level;
+                            $.post("runTagger.php", 
+                                {project: project
+                                },
+                                function(data) {
+                                    console.log(data);
+                                    renderFileTree();
+                                    renderPreview(current_file);
+                                }
+                            );
+                        }
+                    },
+                    items: {
+                        "runtagger": {name: "Run Tagger On Top-Level Folder"}
+                    }
+                });
             });
 		</script>
 	</head>
@@ -245,7 +271,7 @@
 		
 		<div class="example">
             <table><tr>
-                <td><div id="fileTreeDemo_1" class="browser"></div></td>
+                <td><div id="fileTreeDemo_1" class="browser context-menu-two"></div></td>
                 <td><div id="filePreview" class="text context-menu-one"></div></td>
             </tr></table>
 		</div>
