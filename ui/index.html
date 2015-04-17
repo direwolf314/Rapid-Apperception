@@ -80,7 +80,7 @@
             function saveTreeState() {
                 results = [];
                 $('.jqueryFileTree li').each( function(index) {
-                    console.log(index + ': ' + $(this).attr('class'));
+                    //console.log(index + ': ' + $(this).attr('class'));
                     result = 0;
                     if ($(this).attr('class') === 'directory expanded') {
                         result = 1;
@@ -99,17 +99,20 @@
 
             // Restore the open/closed status of each dir in the file tree
             function restoreTreeState(state) {
-                console.log('In restoreTreeState');
+                //console.log('In restoreTreeState');
                 if (state.length < 1) {
-                    console.log('Restore state list was empty');
+                    //console.log('Restore state list was empty');
                     return;
                 }
 
                 $('.jqueryFileTree li').each( function(index) {
-                    console.log('restoring ' + index + ': ' + $(this).attr('class') + ' -- to ' + state[index]);
-                    if (state[index] == 1) {
-                        $(this).children()[0].click(); // this isn't working...
-                        console.log('clicked');
+                    //console.log('checking: ' + index);
+                    if (state[index] == 1 && $(this).attr('class') == 'directory collapsed') {
+                        //console.log('Restoring: ' + index);
+                        $(this).children()[0].click(); 
+                        // Super Hacky. Sleep for x ms and re-process
+                        setTimeout(function(){ restoreTreeState(state) }, 50);
+                        return false;
                     }
                 });
             }
@@ -176,13 +179,13 @@
          
                 function addTag() {
                     dialog.dialog("close");
-                    console.log('made it this far');
+                    //console.log('made it this far');
                     k = $('#keyword').val();
                     t =  $('#tag').val();
                     e = $('#extension').val();
-                    console.log(k);
-                    console.log(t);
-                    console.log(e);
+                    //console.log(k);
+                    //console.log(t);
+                    //console.log(e);
                     if (k.length == 0 || t.length == 0 || e.length == 0) {
                         return;
                     }
@@ -193,7 +196,7 @@
                          project: '/testing/'
                         },
                         function(data) {
-                            console.log(data);
+                            //console.log(data);
                             renderFileTree();
                             renderPreview(current_file);
                         }
@@ -249,7 +252,7 @@
                                 {project: project
                                 },
                                 function(data) {
-                                    console.log(data);
+                                    //console.log(data);
                                     renderFileTree();
                                     renderPreview(current_file);
                                 }

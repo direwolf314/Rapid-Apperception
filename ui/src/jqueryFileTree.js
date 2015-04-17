@@ -65,7 +65,6 @@ if(jQuery) (function($){
 						$(c).removeClass('wait').append(data);
 						if( o.root == t ) $(c).find('UL:hidden').show(); else $(c).find('UL:hidden').slideDown({ duration: o.expandSpeed, easing: o.expandEasing });
 						bindTree(c);
-                        console.log('binding finished');
 
                         // Frank was here
                         if (should_callback) {
@@ -109,6 +108,7 @@ if(jQuery) (function($){
 				// Get the initial file list
 				//showTree( $(this), escape(o.root) );
                 // Frank was here
+                // If this is the first time loading - restore the tree state
 				showTree( $(this), escape(o.root), true);
 			});
 		}
