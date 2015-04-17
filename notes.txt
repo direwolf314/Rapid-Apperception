@@ -15,4 +15,5 @@ Restore the state of the file tree whenever it refreshes
     - Have a list of projects (root folders) in database
     - If selected folder (project doesn't exist) then trigger tagger
 'n/N' key bindings to go jump forward/back in matches
+'s' jump to search
 'enter' key binding on add_tag

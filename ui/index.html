@@ -118,6 +118,8 @@
                 $('#fileTreeDemo_1').fileTree( 
                     {root: '/testing/', 
                      script: 'jqueryFileTree2.php',
+                     expandSpeed: 0,
+                     collapseSpeed: 0,
                      tag: stored_tag_name,
                      restoreCallback: restoreTreeState,
                      restoreStateCallback: getStoredTreeState}, 
@@ -239,13 +241,13 @@
 	<body>
 		<div class="search">
             <input type="text" id="tfq2b" class="tftextinput2" 
-                name="tag_name" size="42" maxlength="120" value="Search tags"/>
+                name="tag_name" size="42" maxlength="120" value="Search tags" accesskey="s"/>
             <input type="button" id="tfq2bbutton" value=">" class="tfbutton2"/>
 		</div>
 		
 		<div class="example">
             <table><tr>
-                <td><div id="fileTreeDemo_1" class="browser"></div></td>
+                <td><div id="fileTreeDemo_1" class="browser context-menu-two"></div></td>
                 <td><div id="filePreview" class="text context-menu-one"></div></td>
             </tr></table>
 		</div>

@@ -28,7 +28,9 @@ if( !isset($_POST['tag_name']) ) {
 
 $cursor = $col->find( $query );
 $line_nums = "";
+$line_array = array();
 foreach ( $cursor as $document ){
+  array_push($line_array, $document["line_num"]);
   $line_nums = $line_nums . $document["line_num"] . ",";
 }
 //echo "Line_nums:" . $line_nums;
@@ -41,8 +43,16 @@ $file = fopen($base_dir . $_POST['file'], "r") or die("Unable to open file!");
 $ext = pathinfo($_POST['file'], PATHINFO_EXTENSION);
 echo "<pre data-line=\"" . $line_nums . "\"><code class=\"language-" . $ext . "\">";
 
+$index = 0;
 while(!feof($file)) {
-  echo htmlspecialchars(fgets($file));
+    $index += 1;
+    $line = fgets($file);
+    if (in_array($index, $line_array)) {
+      $line = str_replace(array("\r", "\n"), '', $line);
+      echo htmlspecialchars($line) . '       -- TAG MATCHED';
+    } else {
+      echo htmlspecialchars($line);
+    }
 }
 echo "</code></pre>";
 
